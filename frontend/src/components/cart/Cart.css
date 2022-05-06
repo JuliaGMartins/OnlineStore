@@ -1,0 +1,14 @@
+.productsListCart{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    color: aliceblue;
+}
+
+.productCart{
+    color: #ff99c8;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    justify-content: space-between;
+}

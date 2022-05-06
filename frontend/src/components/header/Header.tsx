@@ -1,6 +1,11 @@
 import React from 'react';
 import './Header.css';
-//import {NavLink, Link} from 'react-router-dom'
+import Select from 'react-select';
+import { Dropdown, DropdownButton, Nav } from 'react-bootstrap';
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react'
+import Login from '../login/Login';
 
 export const Header = () => {
     return(
@@ -10,10 +15,15 @@ export const Header = () => {
                     <button className='button'>Home</button>
                
                     <button className='button'>Search Product</button>
-               
-                    <button className='button'>My Profile</button>
+
+                    <NavDropdown className='button' title="My Profile">
+                        <NavDropdown.Item className='button' eventKey="1">Log out</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item className='button' eventKey="2">Cart</NavDropdown.Item>
+                    </NavDropdown>
                 
             </div>
         </nav>
-    )
+    );
 }
+
