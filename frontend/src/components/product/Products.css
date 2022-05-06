@@ -1,0 +1,10 @@
+.product{
+    color: #613F75;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    margin: 100px;
+}
+
+.productsList {
+    flex-direction: row;
+}

@@ -1,0 +1,23 @@
+﻿namespace OnlineStore.Domain.Orders.Entities
+{
+    public class Order
+    {
+        public Guid Id { get; set; }
+
+        public string Code { get; set; }
+
+        public int UserID { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime UpdatedDate { get; set; }
+
+        public DateTime? CancelledDate { get; set; }
+
+        public OrderStatus Status { get; set; }
+
+        public List<OrderItem> Item { get; set; }
+
+        public decimal TotalPrice { get; set; }
+    }
+}

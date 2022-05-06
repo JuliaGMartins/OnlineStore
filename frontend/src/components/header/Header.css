@@ -1,0 +1,22 @@
+.header{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #EF798A;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: calc(10px + 2vmin);
+    color: aliceblue;
+}
+
+.button{
+    color: aliceblue;
+    background-color: #EF798A;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.button:hover{
+    background-color:#7D82B8;
+    color: aliceblue;
+}
