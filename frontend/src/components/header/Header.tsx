@@ -19,9 +19,11 @@ export const Header = () => {
                         <NavDropdown.Item id='buttonDrop' eventKey="1">
                             <Link id='buttonDrop' to="/LoginPage">Log out</Link>
                         </NavDropdown.Item>
-                        <NavDropdown.Divider />
                         <NavDropdown.Item id='buttonDrop' eventKey="2">
                             <Link id='buttonDrop' to="/CartPage">Cart</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item id='buttonDrop' eventKey="2">
+                            <Link id='buttonDrop' to="/OrderPage">View orders</Link>
                         </NavDropdown.Item>
                     </NavDropdown>
                 

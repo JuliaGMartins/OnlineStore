@@ -11,6 +11,19 @@
     color: white;
 }
 
+#loginButtonsCancel{
+    background-color: #C36B6B;
+    border-radius: 5px;
+    border-color:#303778;
+    margin: 10px;
+    margin-top: 50px;
+    font-size: 34px;
+    align-items: center;
+    justify-content: center;
+    text-align: right;
+    color: white;
+}
+
 #centralize{
     margin: 100px;
     justify-content: center;
@@ -23,4 +36,8 @@
     justify-content: center;
     align-items: center;
     text-align: left;
+}
+
+#box{
+    margin-left: 50px;
 }

@@ -14,7 +14,7 @@
     text-align: left;
 }
 
-.productsListHome { 
+.productsList { 
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     flex-direction: row;
@@ -27,7 +27,6 @@
 }
 
 .productContainer{
-    padding: 5px;
     background-color: white;
     justify-content: center;
     border-radius: 10px;
@@ -35,10 +34,9 @@
     border-width: 1px;
     border-radius: 5px;
     border-color: #E5E5E5;
-    margin: 10px;
 }
 
-.searchContainer{
+.Container{
     margin: 100px;
     border-style: solid;
     border-width: 1px;
@@ -82,16 +80,33 @@
     color: white;
 }
 
+.buyButton{
+    background-color: #78B7A4;
+    border-radius: 5px;
+    border: solid;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    min-height: 75px;
+    min-width: 150px;
+}
+
+.cancelButton{
+    background-color: #C36B6B;
+    border-radius: 5px;
+    border: solid;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    min-height: 75px;
+    min-width: 150px;
+}
+
 .searchButtonContainer{
     display: flex;
     flex-direction: row;
-}
-
-#addToCart{
-    color: white;
-    background-color: #78B7A4;
-    border-style: solid;
-    border-color: transparent;
-    padding: 20px;
-    min-width: 350px;
 }

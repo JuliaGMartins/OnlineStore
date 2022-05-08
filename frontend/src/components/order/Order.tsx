@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IProduct } from "../product/Interface";
-import './Cart.css'
+import './Order.css'
 import instance from "../../services/Api";
 
 export default function Products(){
@@ -26,8 +26,7 @@ export default function Products(){
                 
             </div>
             <div className="row">
-                <button className="buyButton">Place Order</button>
-                <button className="cancelButton">Cancel</button>
+                <button className="cancelButton">Cancel Order</button>
             </div>
         </div>
         )

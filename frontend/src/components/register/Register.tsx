@@ -1,17 +1,18 @@
-import { Axios } from "axios";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-import instance from "../../services/Api";
 import { useNavigate } from "react-router-dom";
-import './Login.css'
+import instance from "../../services/Api";
+import './Register.css'
 
-export default function Login(props){
+export default function Register(){
 
     const [userName, setUserName] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    const [loginStatus, setLoginStatus] = useState(false);
-    const [loginFinished, setLoginFinished] = useState(false);
+    const [registerStatus, setRegisterStatus] = useState(false);
+    const [registerFinished, setRegisterFinished] = useState(false);
     const navigate = useNavigate();
+    
 
     const handleChangeUsername = e => {
         setUserName(e.target.value);
@@ -21,12 +22,16 @@ export default function Login(props){
         setPassword(e.target.value);
     }
 
-    async function login(){
-        setLoginFinished(false)
+    const handleChangeName = e => {
+        setName(e.target.value);
+    }
+
+    async function register(){
+        setRegisterFinished(false)
         const response = await instance.post<string>(
-            "/api/Auth/token",
+            "/api/User/CreateUser",
             {
-                "name": "dummy",
+                "name": name,
                 "userName": userName,
                 "password": password,
                 "role": 0
@@ -39,16 +44,16 @@ export default function Login(props){
             const token = response.data;
             localStorage.setItem("token", token);
             localStorage.setItem("userName", userName);
-            setLoginStatus(true);
-            navigate(`/`);
+            setRegisterStatus(true);
+            navigate(`/LoginPage`);
         } else {
-            setLoginStatus(false);
+            setRegisterStatus(false);
         }
-        setLoginFinished(true);
+        setRegisterFinished(true);
     }
 
-    async function register(){
-        navigate('/RegisterPage')
+    function cancel() {
+        navigate('/LoginPage')
     }
 
     return(
@@ -58,20 +63,21 @@ export default function Login(props){
         <form id="left">
             <label className="productName">
                 Username:
-                {/* <input type="text" name="name" /> */}
-                <input id="box" onChange={handleChangeUsername} value={userName} type="text" name="name" ></input>
+                <input id="box" onChange={handleChangeUsername} value={userName} type="text" name="username" ></input>
             </label>
-            {/* <input type="submit" value="Submit" /> */}
+            <br></br>
+            <label className="productName">
+                Name:
+                <input id="box" onChange={handleChangeName} value={name} type="text" name="name" ></input>
+            </label>
             <br></br>
             <label className="productName">
                 Password:
-                {/* <input type="text" name="name" /> */}
-                <input id="box" onChange={handleChangePassword} value={password} type="text" ></input>
+                <input id="box" onChange={handleChangePassword} value={password} type="text" name="password" ></input>
             </label>
             <br></br>
-            <Button id="loginButtons" onClick={async () => await login()}>Login</Button>
-            <Button id="loginButtons" onClick={async () => await register()}>Register</Button>
+            <Button id="loginButtons" onClick={async () => register()}>Register</Button>
+            <Button id="loginButtonsCancel" onClick={cancel}>Cancel</Button>
         </form></div>
     )
-    
 }

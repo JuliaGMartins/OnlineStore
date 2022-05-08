@@ -6,6 +6,7 @@ using OnlineStore.Domain.Users.Interfaces.Services;
 
 namespace OnlineStore.API.Controllers
 {
+    [Route("api/[controller]")]
     public class UserController : Controller
     {
         public readonly IUserService userService;
@@ -26,7 +27,7 @@ namespace OnlineStore.API.Controllers
         }
 
         [HttpPost]
-        [Route("Create")]
+        [Route("CreateUser")]
         public void Create([FromBody] User user)
         {
             userService.Create(user);

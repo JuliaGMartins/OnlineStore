@@ -9,7 +9,7 @@ namespace OnlineStore.Domain.Carts.Interfaces.Repository
 {
     public interface ICartRepository
     {
-        void Create(Cart cart);
+        Cart Create(Cart cart);
 
         void AddCartItem(Guid productId, int userId);
 

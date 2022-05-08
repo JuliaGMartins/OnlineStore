@@ -6,6 +6,9 @@ import { Color } from "./ProductColor";
 import { Category } from "./ProductCategory";
 import { NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FaSistrix } from 'react-icons/fa';
+import { IoSearchCircle } from 'react-icons/io5';
+import { VscError } from 'react-icons/vsc';
 
 export default function Product(){
     // const [products, setProducts] = useState<IProduct[]>([
@@ -17,39 +20,46 @@ export default function Product(){
     //Criar variável de estado
     const [products, setProducts] = useState<IProduct[]>([]);
     const [text, setText] = useState<string>("");
+    const [productsLoaded, setProductsLoaded] = useState<boolean>(false);
 
-    function axiosTeste(){
-        instance.get(
-            "/api/Product/GetAllProducts"
-        ).then(function(response){
-            console.log(response);
-        }).catch(function(error){
-            console.log(error);
-        });
-    }
+    // function axiosTeste(){
+    //     instance.get(
+    //         "/api/Product/GetAllProducts"
+    //     ).then(function(response){
+    //         console.log(response);
+    //     }).catch(function(error){
+    //         console.log(error);
+    //     });
+    // }
 
     async function searchByColor(cor: Color){
+        setProductsLoaded(false)
         const productsByColor =  await instance.get(
             "/api/Product/Color?color="+cor
         )
             //Atribuir a variável de estado
         setProducts(productsByColor.data)
+        setProductsLoaded(true)
     }
 
     async function searchByCategory(cat: Category){
+        setProductsLoaded(false)
         const productsByCat =  await instance.get(
             "/api/Product/Category?cat="+cat
         )
             //Atribuir a variável de estado
         setProducts(productsByCat.data)
+        setProductsLoaded(true)
     }
 
     async function searchByName(name: string){
+        setProductsLoaded(false)
         const productsByName =  await instance.get(
             "/api/Product/"+name
         )
             //Atribuir a variável de estado
         setProducts(productsByName.data)
+        setProductsLoaded(true)
     }
 
     const handleChange = e => {
@@ -58,11 +68,12 @@ export default function Product(){
 
     return(
         <div>
-            <div><h1 className="title">Search by: </h1>
+            <div className="searchContainer">
+                <h1 className="title">Search by <IoSearchCircle className="icon"/></h1>
                 <div className="row">
                 <NavDropdown id='searchButtons' title="Name">
                     {
-                        <div>
+                        <div className="searchButtonContainer">
                             <input onChange={handleChange} value={text} type="text" ></input>
                             <button onClick={async () => await searchByName(text)} id='button'>Search</button>
                         </div>
@@ -95,17 +106,32 @@ export default function Product(){
             </div> 
            
                 <div className="productsList">
-                    {
-                        //trocar products por variável de estado
-                        products.map(product => {
-                            return(
-                            <div key={product.productName + product.productImageURL}>
-                                <img className="img" src={product.productImageURL}></img>
-                                <h1 className="product">{product.productName} <br></br>{product.productPrice} R$</h1>
-                            </div>
+                    
+                        {/* //trocar products por variável de estado */}
+                        {productsLoaded && products.length == 0 
+                            && <h1 className="productName"><VscError className="icon"/>No products were found</h1>}
+                        {
+                        productsLoaded && products.length >= 1 && 
+                            products.map(product => {
+                                return(
+                                <div className="productContainer" key={product.productName + product.productImageURL}>
+                                    <img className="img" src={product.productImageURL}></img>
+                                    <div>
+                                        <h1 className="productPrice">R$ {product.productPrice}</h1>
+                                        <h1 className="productName">{product.productName}</h1>
+                                        <NavDropdown id='button' title="See Description">
+                                            <NavDropdown.Item id='buttonDrop' eventKey="1">
+                                                <Link id='buttonDrop' to="/LoginPage">{product.productDescription}</Link>
+                                            </NavDropdown.Item>
+                                        </NavDropdown>
+                                        <button id="addToCart">Add To Cart</button>
+                                    </div>
+                                </div>
                             ) 
-                        })
-                    }
+                            }
+                            )
+                        }
+                    
             </div>
         </div>
         )

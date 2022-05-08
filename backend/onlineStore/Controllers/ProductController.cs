@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineStore.API.Models;
 using OnlineStore.Domain.Products.Entities;
@@ -10,6 +11,7 @@ using OnlineStore.Domain.Products.Services;
 namespace OnlineStore.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class ProductController : ControllerBase
     {

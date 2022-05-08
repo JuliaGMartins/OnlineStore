@@ -1,14 +1,112 @@
-.productsListCart{
+.productPrice{
+    margin: 10px;
+    color: #110F48;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    justify-content: space-between;
-    font-size: calc(10px + 2vmin);
-    color: aliceblue;
+    font-size: 55px;
+    text-align: left;
 }
 
-.productCart{
-    color: #ff99c8;
+.productName{
+    margin: 10px;
+    color: #110F48;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: large;
+    font-size: 34px;
+    text-align: left;
+}
+
+.productsList { 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
     justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    margin: 100px;
+}
+
+.productContainer{
+    background-color: white;
+    justify-content: center;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #E5E5E5;
+}
+
+.searchContainer{
+    margin: 100px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    min-width: 100px;
+    border-color: #E5E5E5;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.img{
+    max-width: 300px;
+    margin: 10px;
+}
+
+.icon{
+    color:#F6B7CE;
+}
+
+.title{
+    margin: 20px;
+    font-size: 50px;
+    color:#303778;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#searchButtons{
+    background-color: #F6B7CE;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.buyButton{
+    background-color: #78B7A4;
+    border-radius: 5px;
+    border: solid;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    min-height: 75px;
+    min-width: 150px;
+}
+
+.cancelButton{
+    background-color: #C36B6B;
+    border-radius: 5px;
+    border: solid;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    min-height: 75px;
+    min-width: 150px;
+}
+
+.searchButtonContainer{
+    display: flex;
+    flex-direction: row;
 }

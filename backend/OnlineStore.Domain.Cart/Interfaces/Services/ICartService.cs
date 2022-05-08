@@ -15,7 +15,7 @@ namespace OnlineStore.Domain.Carts.Interfaces.Services
 
         Cart GetCartByUser(String userName);
 
-        Cart FindCart(Cart cart);
+        Cart Create(Cart cart);
 
         void DeleteCart(Guid id);
     }

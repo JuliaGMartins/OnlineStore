@@ -1,31 +1,31 @@
 .header{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #a9def9;
+    background-color: #303778;
     display: flex;
     flex-direction: row;
     text-align: left;
     justify-content:flex-start;
     font-size: calc(10px + 2vmin);
-    color: aliceblue;
+    color: #7D257D;
 }
 
 #button{
-    color: aliceblue;
-    background-color: #a9def9;
+    color: white;
+    background-color: #303778;
     border-style: solid;
     border-color: transparent;
     padding: 20px;
 }
 
 #button:hover{
-    background-color:#fcf6bd;
-    color: #ff99c8;
+    background-color:#F6B7CE;
+    color: #303778;
     font-style: normal;
 }
 
 #buttonDrop{
-    color: aliceblue;
-    background-color: #a9def9;
+    color: white;
+    background-color: #303778;
     border-style: solid;
     border-color: transparent;
     padding: 25px;
@@ -33,8 +33,8 @@
 }
 
 #buttonDrop:hover{
-    color: #ff99c8;
-    background-color: #fcf6bd;
+    color: #303778;
+    background-color: #F6B7CE;
     border-style: solid;
     border-color: transparent;
     padding: 25px;

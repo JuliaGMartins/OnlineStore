@@ -14,5 +14,7 @@ namespace OnlineStore.Domain.Users.Interfaces.Services
         User GetByUserName(string userName);
 
         void Update(User user);
+
+        bool ValidateUser(User user);
     }
 }

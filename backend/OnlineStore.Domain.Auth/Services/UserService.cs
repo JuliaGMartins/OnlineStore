@@ -37,16 +37,17 @@ namespace OnlineStore.Domain.Users.Services
             userRepository.Commit();
         }
 
-        private void ValidateUserName(User user)
+        public bool ValidateUser(User user)
         {
             var userTemp = userRepository.GetByUserName(user.UserName);
             if (userTemp == null)
             {
-                throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
+                return false;
             } else if (!userRepository.ValidatePassword(userTemp))
             {
-                throw new HttpResponseException(System.Net.HttpStatusCode.Unauthorized);
+                return false;
             }
+            return true;
         }
     }
 }

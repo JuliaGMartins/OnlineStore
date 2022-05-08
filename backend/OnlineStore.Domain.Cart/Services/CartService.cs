@@ -41,23 +41,9 @@ namespace OnlineStore.Domain.Carts.Services
             throw new NotImplementedException();
         }
 
-        public Cart FindCart(Cart cart)
+        public Cart Create(Cart cart)
         {
-            var cartTemp = cartRepository.GetCartByUser(cart.Username);
-            if (cartTemp == null)
-            {   
-                cartTemp.Username = cart.Username;
-                cartTemp.Id = Guid.NewGuid();
-
-                cartRepository.Create(cartTemp);
-                cartRepository.Commit();
-
-                return cartTemp;
-            }
-            else
-            {
-                return cartTemp;
-            }
+            return cartRepository.Create(cart);
         }
 
         public void DeleteCart(Guid id)

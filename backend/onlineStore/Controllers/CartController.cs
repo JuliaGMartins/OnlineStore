@@ -6,6 +6,7 @@ using OnlineStore.Domain.Carts.Interfaces.Services;
 
 namespace OnlineStore.API.Controllers
 {
+    [Route("api/[controller]")]
     public class CartController : Controller
     {
         public readonly ICartService cartService;
@@ -18,11 +19,18 @@ namespace OnlineStore.API.Controllers
         }
 
         [HttpPost]
-        [Route("Find")]
+        [Route("CreateCart")]
         //Procura o Cart, se já não existir algum para o usuário, cria
         public ActionResult<Cart> Create([FromBody] Cart cart)
         {
-            return cartService.FindCart(cart);
+            return cartService.Create(cart);
+        }
+
+        [HttpGet]
+        [Route("GetByUsername")]
+        public ActionResult<Cart> Get(String username)
+        {
+            return cartService.GetCartByUser(username);
         }
     }
 }

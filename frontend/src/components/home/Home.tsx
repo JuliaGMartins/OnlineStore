@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IProduct } from "../product/Interface";
 import './Home.css'
 import instance from "../../services/Api";
+import NavDropdown from "react-bootstrap/esm/NavDropdown";
+import { Link } from "react-router-dom";
 
 export default function Product(){
     // const [products, setProducts] = useState<IProduct[]>([
@@ -10,26 +12,54 @@ export default function Product(){
     //     {id: 3, name: "Produto 3", description: "descrição 3", color: "amarelo", category: "Categoria 3", imageURL:"C", price: 300},
     // ])
 
-    const [products, getAllProducts] = useState<IProduct[]>([]);
+    const [products, setProducts] = useState<IProduct[]>([]);
 
-    async function axiosTeste(){
-        const allProducts = await instance.get(
-            "/api/Product/GetAllProducts" 
+    async function loadAllProducts(){
+        const token = localStorage.getItem('token')
+        const allProducts = await instance.get<IProduct[]>(
+            "/api/Product/GetAllProducts"
+            ,
+            {
+                headers: { Authorization: `Bearer ${token}` }
+            }
+            
         )
 
-        getAllProducts(allProducts.data)
+        // setAllProducts(allProducts.data)
+        return allProducts.data
     }
+
+    useEffect(() => {
+        const getAllProducts = async () => {
+          const products = await loadAllProducts();
+          setProducts(products)
+        //   setExams(respExams);
+        //   setIsLoaded(true);
+        //   setCounter(counter);
+        //   console.log(respExams);
+        }
+        getAllProducts();
+    }, []);
 
     return(
         <div className="homeStyle">
-            <button onClick={axiosTeste}>Oi</button>
+            {/* <button onClick={LoadAllProducts}>Oi</button> */}
             <div className="productsListHome">
                 {
                     products.map(product => {
                         return(
-                        <div key={product.productName + product.productImageURL}>
-                            <img className="img" src={product.productImageURL}></img>
-                            <h1 className="productHome">{product.productName} {product.productPrice}</h1>
+                        <div className="productContainer" key={product.productName + product.productImageURL}>
+                            <img className="img" src={product.productImageURL}></img><hr></hr>
+                            <div>
+                                <h1 className="productPrice">R$ {product.productPrice}</h1>
+                                <h1 className="productName">{product.productName}</h1>
+                                <NavDropdown id='button' title="See Description">
+                                <NavDropdown.Item id='buttonDrop' eventKey="1">
+                                    <Link id='buttonDrop' to="/LoginPage">{product.productDescription}</Link>
+                                </NavDropdown.Item>
+                                </NavDropdown>
+                                <button id="addToCart">Add To Cart</button>
+                            </div>
                         </div>
                                
                         ) 

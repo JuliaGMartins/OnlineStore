@@ -29,6 +29,8 @@ namespace OnlineStore.API.Configuration
 
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IOrderService, OrderService>();
+
+            services.AddScoped<TokenService, TokenService>();
         }
     }
 }

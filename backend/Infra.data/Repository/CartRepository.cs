@@ -29,9 +29,10 @@ namespace Infra.data.Repository
             cartContext.SaveChanges();
         }
 
-        public void Create(Cart cart)
+        public Cart Create(Cart cart)
         {
             cartContext.Carts.Add(cart);
+            return cart;
         }
 
         public void DeleteCart(Guid cartId)
