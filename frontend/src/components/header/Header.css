@@ -9,7 +9,7 @@
     color: aliceblue;
 }
 
-.button{
+#button{
     color: aliceblue;
     background-color: #a9def9;
     border-style: solid;
@@ -17,7 +17,27 @@
     padding: 20px;
 }
 
-.button:hover{
+#button:hover{
     background-color:#fcf6bd;
     color: #ff99c8;
+    font-style: normal;
+}
+
+#buttonDrop{
+    color: aliceblue;
+    background-color: #a9def9;
+    border-style: solid;
+    border-color: transparent;
+    padding: 25px;
+    font-size:larger;
+}
+
+#buttonDrop:hover{
+    color: #ff99c8;
+    background-color: #fcf6bd;
+    border-style: solid;
+    border-color: transparent;
+    padding: 25px;
+    font-size:larger;
+    font-style: normal;
 }

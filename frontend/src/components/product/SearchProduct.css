@@ -1,0 +1,46 @@
+.product{
+    color: #ff99c8;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+}
+
+.productsList { 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(10px + 2vmin);
+    color: aliceblue;
+    margin: 100px
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.img{
+    max-width: 300px;
+}
+
+.title{
+    margin: 20px;
+    font-size: 50px;
+    color:#ff99c8;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#searchButtons{
+    background-color: transparent;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

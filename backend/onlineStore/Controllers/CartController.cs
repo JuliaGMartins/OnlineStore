@@ -19,6 +19,7 @@ namespace OnlineStore.API.Controllers
 
         [HttpPost]
         [Route("Find")]
+        //Procura o Cart, se já não existir algum para o usuário, cria
         public ActionResult<Cart> Create([FromBody] Cart cart)
         {
             return cartService.FindCart(cart);

@@ -1,9 +1,11 @@
+import { Color } from "./ProductColor";
+import { Category } from "./ProductCategory";
+
 export interface IProduct {
-    id: Number,
-    name: string,
-    description: string,
-    color: string,
-    category: string,
-    imageURL: string,
-    price: number,
+    productName: string,
+    productDescription: string,
+    color: Color,
+    category: Category,
+    productImageURL: string,
+    productPrice: number,
 }

@@ -1,8 +1,8 @@
 import Cart from "../components/cart/Cart";
 import { Header } from "../components/header/Header";
-import Product from "../components/product/Product";
+import Product from "../components/product/SearchProduct";
 
-export default function ProductSearchPage(){
+export default function CartPage(){
     return(
         <><Header></Header><Cart></Cart></>
     )
