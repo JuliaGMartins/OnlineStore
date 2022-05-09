@@ -71,7 +71,7 @@ export default function Register(){
                 <input id="box" onChange={handleChangeName} value={name} type="text" name="name" ></input>
             </label>
             <br></br>
-            <label className="productName">
+            <label title="a" className="productName">
                 Password:
                 <input id="box" onChange={handleChangePassword} value={password} type="text" name="password" ></input>
             </label>

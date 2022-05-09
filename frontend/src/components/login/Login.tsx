@@ -40,7 +40,7 @@ export default function Login(props){
             localStorage.setItem("token", token);
             localStorage.setItem("userName", userName);
             setLoginStatus(true);
-            navigate(`/`);
+            navigate('/HomePage');
         } else {
             setLoginStatus(false);
         }
