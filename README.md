@@ -30,15 +30,17 @@ Já no frontend, a estrutura foi simples, pensando na clara divisão em componen
 
 # Tecnologias e Bibliotecas
 
-ASP.Net Core Net.6
-
-Swagger UI
-
-Microsoft.AspNetCore.Authentication.JwtBearer
-
-AutoMapper
-
-
+* ASP.Net Core - Net.6
+* Docker
+* SQL Server
+* Swagger UI
+* Microsoft.AspNetCore.Authentication.JwtBearer
+* AutoMapper
+* Microsoft.ApplicationInsights
+* Microsoft.EntityFrameworkCore (.Design, .Tools, .SqlServer)
+* React
+* Vite
+* Bootstrap
 
 # Objetivos do projeto
 
