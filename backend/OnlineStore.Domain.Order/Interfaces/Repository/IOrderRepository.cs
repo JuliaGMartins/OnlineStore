@@ -9,13 +9,15 @@ namespace OnlineStore.Domain.Orders.Interfaces.Repository
 {
     public interface IOrderRepository
     {
-        void Create(Order order);
+        Order Create(Order order);
 
-        void UpdateStatusCancelled(String code);
+        void UpdateStatusCancelled(Guid id);
 
-        void UpdateStatusAccepted(String code);
+        void UpdateStatusAccepted(Guid id);
+        
+        void UpdateStatusCancelPending(Guid id);
 
-        Order GetOrderByCode(String code);
+        Order GetOrderByCode(Guid id);
 
         void Delete(Order order);
 

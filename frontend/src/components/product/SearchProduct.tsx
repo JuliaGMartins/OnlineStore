@@ -34,8 +34,10 @@ export default function Product(){
 
     async function searchByColor(cor: Color){
         setProductsLoaded(false)
+        const token = localStorage.getItem("token")
         const productsByColor =  await instance.get(
-            "/api/Product/Color?color="+cor
+            "/api/Product/Color?color="+cor,
+            { headers: { Authorization: `Bearer ${token}` } }
         )
             //Atribuir a variável de estado
         setProducts(productsByColor.data)
@@ -44,8 +46,10 @@ export default function Product(){
 
     async function searchByCategory(cat: Category){
         setProductsLoaded(false)
+        const token = localStorage.getItem("token")
         const productsByCat =  await instance.get(
-            "/api/Product/Category?cat="+cat
+            "/api/Product/Category?cat="+cat,
+            { headers: { Authorization: `Bearer ${token}` } }
         )
             //Atribuir a variável de estado
         setProducts(productsByCat.data)
@@ -54,8 +58,10 @@ export default function Product(){
 
     async function searchByName(name: string){
         setProductsLoaded(false)
+        const token = localStorage.getItem("token")
         const productsByName =  await instance.get(
-            "/api/Product/"+name
+            "/api/Product/"+name,
+            { headers: { Authorization: `Bearer ${token}` } }
         )
             //Atribuir a variável de estado
         setProducts(productsByName.data)

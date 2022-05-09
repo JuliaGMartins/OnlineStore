@@ -11,9 +11,9 @@ namespace OnlineStore.Domain.Carts.Interfaces.Repository
     {
         Cart Create(Cart cart);
 
-        void AddCartItem(Guid productId, int userId);
+        void AddCartItem(Guid productId, string userId);
 
-        void DeleteCartItem(Guid productId, int userId);
+        void DeleteCartItem(Guid productId, string userId);
 
         Cart GetCartByUser(String userName);
 

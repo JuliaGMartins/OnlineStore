@@ -17,12 +17,8 @@ export default function Product(){
     async function loadAllProducts(){
         const token = localStorage.getItem('token')
         const allProducts = await instance.get<IProduct[]>(
-            "/api/Product/GetAllProducts"
-            ,
-            {
-                headers: { Authorization: `Bearer ${token}` }
-            }
-            
+            "/api/Product/GetAllProducts",
+            { headers: { Authorization: `Bearer ${token}` } }
         )
 
         // setAllProducts(allProducts.data)

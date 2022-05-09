@@ -22,7 +22,7 @@ namespace OnlineStore.API.Configuration
             services.AddScoped<IProductService, ProductService>();
 
             services.AddScoped<ICartRepository, CartRepository>();
-            services.AddScoped<CartService, CartService>();
+            services.AddScoped<ICartService, CartService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();

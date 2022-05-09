@@ -18,9 +18,10 @@ namespace Infra.data.Repository
             this.orderContext = orderContext;
         }
 
-        public void Create(Order order)
+        public Order Create(Order order)
         {
             orderContext.Orders.Add(order);
+            return order;
         }
 
         public void Commit()
@@ -33,23 +34,32 @@ namespace Infra.data.Repository
             orderContext.Orders.Remove(order);
         }
 
-        public Order GetOrderByCode(string code)
+        public Order GetOrderByCode(Guid id)
         {
-            return orderContext.Orders.FirstOrDefault(order => order.Code.Equals(code));
+            return orderContext.Orders.FirstOrDefault(order => order.Id.Equals(id));
         }
 
-        public void UpdateStatusAccepted(string code)
+        public void UpdateStatusAccepted(Guid id)
         {
-            var order = new Order() { Code = code};
+            var order = new Order() { Id = id };
             using (var db = orderContext)
             {
                 db.Orders.Attach(order).Property(Status => "Accepted");
             }
         }
 
-        public void UpdateStatusCancelled(string code)
+        public void UpdateStatusCancelPending(Guid id)
         {
-            var order = new Order() { Code = code };
+            var order = new Order() { Id = id };
+            using (var db = orderContext)
+            {
+                db.Orders.Attach(order).Property(Status => "CancelPending");
+            }
+        }
+
+        public void UpdateStatusCancelled(Guid id)
+        {
+            var order = new Order() { Id = id };
             using (var db = orderContext)
             {
                 db.Orders.Attach(order).Property(Status => "Cancelled");

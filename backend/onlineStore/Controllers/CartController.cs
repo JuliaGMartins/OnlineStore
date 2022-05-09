@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineStore.Domain.Carts.Entities;
 using OnlineStore.Domain.Carts.Interfaces.Services;
+using OnlineStore.Domain.Products.Entities;
 
 namespace OnlineStore.API.Controllers
 {
@@ -32,5 +33,22 @@ namespace OnlineStore.API.Controllers
         {
             return cartService.GetCartByUser(username);
         }
+
+        [HttpPost]
+        [Route("AddCartItem")]
+        public ActionResult AddCartItem(Guid productId, string userId)
+        {
+            cartService.AddCartItem(productId, userId);
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("RemoveCartItem")]
+        public ActionResult RemoveCartItem(Guid productId, string userId)
+        {
+            cartService.DeleteCartItem(productId, userId);
+            return Ok();
+        }
+
     }
 }

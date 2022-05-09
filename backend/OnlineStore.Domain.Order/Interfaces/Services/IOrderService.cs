@@ -11,10 +11,12 @@ namespace OnlineStore.Domain.Orders.Interfaces.Services
     {
         Order CreateOrder(Order order);
 
-        void CancelOrder(String code);
+        void CancelOrder(Guid id);
 
-        Order FindOrder(String code);
+        Order FindOrder(Guid id);
 
-        Order UpdateOrderStatus(String code, OrderStatus orderStatus);
+        void UpdateOrderStatusFinished(Guid id);
+
+        void UpdateOrderStatusCancelPending(Guid id);
     }
 }

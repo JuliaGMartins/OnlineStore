@@ -15,26 +15,30 @@ namespace OnlineStore.Domain.Orders.Services
         public OrderService(IOrderRepository orderRepository)
         {
             this.orderRepository = orderRepository;
-
         }
-        public void CancelOrder(string code)
+        public void CancelOrder(Guid id)
         {
-            throw new NotImplementedException();
+            orderRepository.UpdateStatusCancelled(id);
         }
 
         public Order CreateOrder(Order order)
         {
-            throw new NotImplementedException();
+            return orderRepository.Create(order);
         }
 
-        public Order FindOrder(string code)
+        public Order FindOrder(Guid id)
         {
-            throw new NotImplementedException();
+            return orderRepository.GetOrderByCode(id);
         }
 
-        public Order UpdateOrderStatus(string code, OrderStatus orderStatus)
+        public void UpdateOrderStatusFinished(Guid id)
         {
-            throw new NotImplementedException();
+            orderRepository.UpdateStatusAccepted(id);
+        }
+
+        public void UpdateOrderStatusCancelPending(Guid id)
+        {
+            orderRepository.UpdateStatusCancelPending(id);
         }
     }
 }

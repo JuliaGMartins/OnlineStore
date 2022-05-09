@@ -36,14 +36,12 @@ namespace OnlineStore.Domain.Carts.Services
             }
         }
 
-        public void AddCartItem(Guid productId, int userId)
-        {
-            throw new NotImplementedException();
-        }
-
         public Cart Create(Cart cart)
         {
-            return cartRepository.Create(cart);
+            var result = cartRepository.Create(cart);
+            cartRepository.Commit();
+            return result;
+
         }
 
         public void DeleteCart(Guid id)
@@ -51,9 +49,10 @@ namespace OnlineStore.Domain.Carts.Services
             throw new NotImplementedException();
         }
 
-        public void DeleteCartItem(Guid productId, int userId)
+        public void DeleteCartItem(Guid productId, string userId)
         {
-            throw new NotImplementedException();
+            cartRepository.DeleteCartItem(productId, userId);
+            cartRepository.Commit();
         }
 
         public Cart GetCartByUser(String userName)

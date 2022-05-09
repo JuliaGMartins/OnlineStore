@@ -17,10 +17,10 @@ namespace Infra.data.Mapping
             builder.Property(prop => prop.Id)
                 .HasColumnName("Id");
 
-            builder.Property(prop => prop.Code)
-                .HasColumnType("varchar(20)")
-                .HasMaxLength(20)
-                .IsRequired();
+            //builder.Property(prop => prop.Code)
+            //    .HasColumnType("varchar(20)")
+            //    .HasMaxLength(20)
+            //    .IsRequired();
 
             builder.Property(prop => prop.UserID)
                 .HasColumnType("varchar(20)")

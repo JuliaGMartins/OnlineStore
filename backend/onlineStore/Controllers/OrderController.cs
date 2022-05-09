@@ -1,90 +1,69 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnlineStore.Domain.Orders.Entities;
+using OnlineStore.Domain.Orders.Interfaces.Services;
 
 namespace OnlineStore.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class OrderController : Controller
     {
-        // GET: OrderController
-        [HttpGet("get")]
-        public ActionResult Index()
+
+        public readonly IOrderService orderService;
+        private readonly IMapper mapper;
+
+        public OrderController(IOrderService productService, IMapper mapper)
         {
-            return View();
+            this.orderService = productService;
+            this.mapper = mapper;
         }
 
-        // GET: OrderController/Details/5
-        [HttpGet("details")]
-        public ActionResult Details(int id)
+        // GET: api/<ProductController>
+        [HttpGet("{id}")]
+        public ActionResult<Order> Get(Guid id)
         {
-            return View();
+            return orderService.FindOrder(id);
         }
 
-        // GET: OrderController/Create
-        [HttpGet("getcreate")]
-        public ActionResult Create()
+        [HttpPost]
+        [Route("CancelOrder")]
+        // GET api/<ProductController>/5
+        public ActionResult CancelOrder(Guid id)
         {
-            return View();
+            orderService.CancelOrder(id);
+            return Ok();
         }
 
-        // POST: OrderController/Create
-        [HttpPost("create")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [HttpPost]
+        [Route("Create")]
+        // GET api/<ProductController>/5
+        public ActionResult CreateOrder(Order order)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            orderService.CreateOrder(order);
+            return Ok();
         }
 
-        [HttpGet("getedit")]
-        // GET: OrderController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPost]
+        [Route("UpdateOrderCancelPending")]
+        // GET api/<ProductController>/5
+        public ActionResult UpdateOrderCancelPending(Guid id)
         {
-            return View();
+            orderService.UpdateOrderStatusCancelPending(id);
+            return Ok();
         }
 
-        [HttpPost("edit")]
-        // POST: OrderController/Edit/5
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpPost]
+        [Route("UpdateOrderFinished")]
+        // GET api/<ProductController>/5
+        public ActionResult UpdateOrderFinished(Guid id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            orderService.UpdateOrderStatusFinished(id);
+            return Ok();
         }
 
-        [HttpGet("getdelete")]
-        // GET: OrderController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: OrderController/Delete/5
-        [HttpPost("delete2")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
